@@ -31,7 +31,7 @@ fetch("https://accounts.spotify.com/api/token", {
     "Authorization": "Basic " + btoa(id_and_secret_b64),
   },
 })
-  .then((r) => r.json())
+  .then((r) => r.json())	//	access token info is in r.json
   .then((r) => {
     console.log("Response", r); // You will get JSON response here.
   })
