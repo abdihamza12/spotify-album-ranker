@@ -1,6 +1,8 @@
 import { client_secret } from "./client_credentials.mjs";
 import { client_id } from "./client_credentials.mjs";
 
+console.log(client_id, client_secret);
+
 // import queryString from "./node_modules/querystring"
 // const querystring = require('node:querystring');
 
@@ -18,15 +20,15 @@ const paramsObj = {
 
 const searchParams = new URLSearchParams(paramsObj);
 
-const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
-console.log(id_and_secret_b64);
+const id_and_secret_b64 = client_id + ":" + client_secret;
+console.log(btoa(id_and_secret_b64));
 
 fetch("https://accounts.spotify.com/api/token", {
   method: "POST",
   body: searchParams.toString(),
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
-    Authorization: "Basic" + id_and_secret_b64,
+    "Authorization": "Basic " + btoa(id_and_secret_b64),
   },
 })
   .then((r) => r.json())
