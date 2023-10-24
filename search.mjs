@@ -11,10 +11,8 @@ const queryString = new URLSearchParams(searchQuery);
 fetch("https://accounts.spotify.com/api/search",
 	{
 		method: "GET",
-		body:
-		{
-			queryString.toString();
-		},
+		body: queryString.toString()
+		,
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
 			"Authorization": "Basic " + btoa(id_and_secret_b64),
