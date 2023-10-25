@@ -1,10 +1,8 @@
 import { client_secret } from "./client_credentials.mjs";
 import { client_id } from "./client_credentials.mjs";
 
-console.log(client_id, client_secret);
+// console.log(client_id, client_secret);
 
-// import queryString from "./node_modules/querystring"
-// const querystring = require('node:querystring');
 
 let web_address = new URL(document.location).searchParams;
 
