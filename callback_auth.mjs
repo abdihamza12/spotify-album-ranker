@@ -18,19 +18,47 @@ const paramsObj = {
 
 const searchParams = new URLSearchParams(paramsObj);
 
-const id_and_secret_b64 = client_id + ":" + client_secret;
-console.log(btoa(id_and_secret_b64));
+const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
+console.log(id_and_secret_b64);
 
 fetch("https://accounts.spotify.com/api/token", {
   method: "POST",
   body: searchParams.toString(),
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
-    "Authorization": "Basic " + btoa(id_and_secret_b64),
+    "Authorization": "Basic " + id_and_secret_b64,
   },
 })
   .then((r) => r.json())	//	access token info is in r.json
   .then((r) => {
+    localStorage.setItem("access_token", r.access_token)
+    localStorage.setItem("refresh_token", r.refresh_token)
+    // console.log(localStorage.getItem('access_token'))
     console.log("Response", r); // You will get JSON response here.
   })
   .catch((error) => console.error("Error", error));
+
+
+  const getRefreshToken = async() => {
+    const refreshToken = localStorage.getItem('refresh_token')
+    const url = "https://accounts.spotify.com/api/token"
+
+    const refreshParamObj = {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + id_and_secret_b64
+      },
+      body: new URLSearchParams({
+        grant_type: "refresh_token",
+        refresh_token: refreshToken,
+        client_id: client_id
+      }).toString()
+    }
+    const body = await fetch(url, refreshParamObj)
+    const response = await body.json()
+
+    localStorage.setItem("access_token", response.access_token)
+    localStorage.setItem("refresh_token", response.refresh_token)
+    console.log("Response", response)
+  } 

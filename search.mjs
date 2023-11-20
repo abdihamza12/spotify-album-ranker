@@ -23,3 +23,9 @@ fetch("https://accounts.spotify.com/api/search",
 		console.log("Response", r); // You will get JSON response here.
 	})
 	.catch((error) => console.error("Error", error));
+
+
+/* ----------------------------------------------------------------- */
+
+
+
