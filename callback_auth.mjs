@@ -1,5 +1,7 @@
 import { client_secret } from "./client_credentials.mjs";
 import { client_id } from "./client_credentials.mjs";
+// import { getAlbumId } from "./search.mjs"
+
 
 // console.log(client_id, client_secret);
 
@@ -62,3 +64,4 @@ fetch("https://accounts.spotify.com/api/token", {
     localStorage.setItem("refresh_token", response.refresh_token)
     console.log("Response", response)
   } 
+
