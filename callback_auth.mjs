@@ -37,6 +37,8 @@ fetch("https://accounts.spotify.com/api/token", {
     localStorage.setItem("refresh_token", r.refresh_token)
     // console.log(localStorage.getItem('access_token'))
     console.log("Response", r); // You will get JSON response here.
+
+    setInterval(getRefreshToken, 3590000)
   })
   .catch((error) => console.error("Error", error));
 
