@@ -7,15 +7,18 @@
     <script type="module" src="callback_auth.mjs"></script>
     <script type="module" src="search.mjs" defer></script>
     <script type="module" src="drag_drop.mjs" defer></script>
-    <link rel="stylesheet" href="callback.css">
+    <script type="module" src="html_to_img.mjs" defer></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.js"></script> -->
+    <link rel="stylesheet" href="callback.css" >
   </head>
   <body>
-    <h1>yippee it works</h1>
+    <h1>ENTER THE NAME OF AN ALBUM YOU'D LIKE TO RATE</h1>
     <!-- <button id="body">CONTINUE</button> -->
     <form id="album_submit">
       <label for="album_name">Album Name: </label><br />
       <input type="text" name="album_name" id="album_name" />
     </form>
+    <button id="download_button">Download</button>
 
     <ul id="track_listing"></ul>
   </body>

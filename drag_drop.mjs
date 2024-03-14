@@ -17,7 +17,7 @@ export function drag_drop(container) {
   container.addEventListener("dragover", (e) => {
     e.preventDefault();
     const afterElement = getDragAfterElement(container, e.clientY);
-    console.log(afterElement)
+    // console.log(afterElement)
     const draggable = document.querySelector(".dragging");
     if (afterElement == null) {
       container.appendChild(draggable)
