@@ -7,8 +7,6 @@
     <script type="module" src="callback_auth.mjs"></script>
     <script type="module" src="search.mjs" defer></script>
     <script type="module" src="drag_drop.mjs" defer></script>
-    <script type="module" src="html_to_img.mjs" defer></script>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.js"></script> -->
     <link rel="stylesheet" href="callback.css" >
   </head>
   <body>
@@ -19,7 +17,25 @@
       <input type="text" name="album_name" id="album_name" />
     </form>
     <button id="download_button">Download</button>
-
+    
     <ul id="track_listing"></ul>
-  </body>
+    <script src="./html2canvas.min.js"></script>
+    <script>
+      // import html2canvas from 'html2canvas'
+
+      document.getElementById("download_button").onclick = function() {
+        console.log("clicked")
+      
+        const screenshotDiv = document.getElementById("track_listing")
+        
+        html2canvas(screenshotDiv).then((canvas) => {
+          const b64image = canvas.toDataURL("image/png")
+          var a = document.createElement('a')
+          a.setAttribute('href', b64image);
+          a.setAttribute('download', 'song-list.png')
+          a.click();
+        })
+      }
+      </script>
+      </body>
 </html>

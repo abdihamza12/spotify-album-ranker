@@ -1,18 +1,16 @@
-// import domtoimage from 'dom-to-image';
-import * as htmlToImage from './node_modules/html-to-image';
-import * as download from "./node_modules/download";
-// import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
-const downloadBtn = document.getElementById("download_button");
+      import html2canvas from 'html2canvas'
 
-downloadBtn.addEventListener('click', htmlToImg);
-
-const node = document.getElementById("track-listing");
-
-function htmlToImg() {
-    console.log('clicked');
-    htmlToImage.toPng(node)
-    .then(function (dataUrl) {
-    download(dataUrl, 'sorted-album.png');
-  });
-}
+      document.getElementById("download_button").onclick = function() {
+        console.log("clicked")
+      }
+        const screenshotDiv = document.getElementById("track-listing")
+        
+        html2canvas(screenshotDiv).then((canvas) => {
+          const b64image = canvas.toDataURL("image/png")
+          var a = document.createElement('a')
+          a.setAttribute('href', b64image);
+          a.setAttribute('download', 'song-list.png')
+          a.click();
+          a.remove()
+        })
