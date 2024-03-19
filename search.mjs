@@ -66,12 +66,22 @@ function printTrackList(track_json) {
 
   track_json.forEach((item) => {
     var list_item = document.createElement("li");
+    var preview_link = document.createElement('a');
+    var audio_prev = new Audio(item.preview_url)
+    var audio_btn = document.createElement('button')
+    audio_btn.innerHTML = "Play Preview"
+    audio_btn.className = "prev_button"
+    list_item.appendChild(audio_btn)
+    preview_link.setAttribute('href', item.preview_url)
+    preview_link.innerHTML = "preview";
     list_item.appendChild(document.createTextNode(item.name));
+    list_item.appendChild(preview_link)
     list_item.className = "drag_item";
     list_item.draggable = true;
     track_listing.appendChild(list_item);
   });
   drag_drop(track_listing);
+  
 }
 
 let album_submit = document.getElementById("album_submit");
@@ -83,3 +93,12 @@ album_submit.addEventListener("submit", (e) => {
   console.log(album_title.value);
   getAlbumId(album_title.value, localStorage.getItem("access_token"));
 });
+
+
+let preview_btn = document.getElementById("prev_button");
+
+preview_btn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+
+})
