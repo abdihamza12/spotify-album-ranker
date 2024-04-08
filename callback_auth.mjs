@@ -15,7 +15,7 @@ let auth_code = web_address.get("code");
 const paramsObj = {
   grant_type: "authorization_code",
   code: auth_code,
-  redirect_uri: "http://127.0.0.1:8080/callback.html",
+  redirect_uri: "http://abdihamza12.github.io/spotify-album-ranker/callback.html",
 };
 
 const searchParams = new URLSearchParams(paramsObj);
