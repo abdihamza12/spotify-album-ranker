@@ -1,5 +1,5 @@
 const client_id = "d10044f2d95d49b09c36e3bec519c6de"
-const redirect_uri = 'http://127.0.0.1:8080/callback.html'
+const redirect_uri = 'http://abdihamza12.github.io/spotify-album-ranker/callback.html'
 
 var auth_link = 'https://accounts.spotify.com/authorize?client_id=' +
                 client_id + '&response_type=code&scope=user-library-read%20user-library-modify&redirect_uri=' + redirect_uri
