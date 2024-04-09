@@ -22,7 +22,7 @@
     <script>
       // import html2canvas from 'html2canvas'
       
-      document.getElementById("download_button").onclick = function() {
+      document.getElementById("download_button").addEventListener("click", (e) => {  
         console.log("clicked")
         
         const screenshotDiv = document.getElementById("track_listing")
@@ -34,7 +34,7 @@
           a.setAttribute('download', 'song-list.png')
           a.click();
         })
-      }
+      })
       </script>
       <button id="download_button">Download</button>
       </body>
