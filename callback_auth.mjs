@@ -1,9 +1,11 @@
 // import { client_secret } from "./client_credentials.mjs";
 // import { client_id } from "./client_credentials.mjs";
 // import { getAlbumId } from "./search.mjs"
+import dotenv from 'dotenv';
 
+dotenv.config();
 
-// console.log(client_id, client_secret);
+console.log(process.env.CLIENT_ID, process.env.CLIENT_SECRET);
 
 
 let web_address = new URL(document.location).searchParams;
