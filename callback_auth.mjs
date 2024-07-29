@@ -1,5 +1,5 @@
-import { client_secret } from "./client_credentials.mjs";
-import { client_id } from "./client_credentials.mjs";
+// import { client_secret } from "./client_credentials.mjs";
+// import { client_id } from "./client_credentials.mjs";
 // import { getAlbumId } from "./search.mjs"
 
 
@@ -20,8 +20,8 @@ const paramsObj = {
 
 const searchParams = new URLSearchParams(paramsObj);
 
-const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
-console.log(id_and_secret_b64);
+const id_and_secret_b64 = btoa(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET);
+console.log('Client using env: ' + id_and_secret_b64);
 
 fetch("https://accounts.spotify.com/api/token", {
   method: "POST",
@@ -56,7 +56,7 @@ fetch("https://accounts.spotify.com/api/token", {
       body: new URLSearchParams({
         grant_type: "refresh_token",
         refresh_token: refreshToken,
-        client_id: client_id
+        client_id: process.env.CLIENT_ID
       }).toString()
     }
     const body = await fetch(url, refreshParamObj)
