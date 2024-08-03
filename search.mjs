@@ -69,6 +69,7 @@ function printTrackList(track_json) {
     list_item.appendChild(document.createTextNode(item.name));
     list_item.className = "drag_item";
     list_item.draggable = true;
+    list_item.appendChild(document.createElement('input'))
     track_listing.appendChild(list_item);
   });
   drag_drop(track_listing);
