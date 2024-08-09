@@ -1,7 +1,7 @@
 // import { client_secret } from "./client_credentials.mjs";
 // import { client_id } from "./client_credentials.mjs";
 // import { getAlbumId } from "./search.mjs"
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
