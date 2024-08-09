@@ -1,9 +1,11 @@
-import { client_secret } from "./client_credentials.mjs";
-import { client_id } from "./client_credentials.mjs";
+// import { client_secret } from "./client_credentials.mjs";
+// import { client_id } from "./client_credentials.mjs";
 // import { getAlbumId } from "./search.mjs"
+import dotenv from 'dotenv';
 
+dotenv.config();
 
-// console.log(client_id, client_secret);
+console.log(process.env.CLIENT_ID, process.env.CLIENT_SECRET);
 
 
 let web_address = new URL(document.location).searchParams;
@@ -15,13 +17,13 @@ let auth_code = web_address.get("code");
 const paramsObj = {
   grant_type: "authorization_code",
   code: auth_code,
-  redirect_uri: "http://127.0.0.1:8080/callback.html",
+  redirect_uri: "https://abdihamza12.github.io/spotify-album-ranker/callback.html",
 };
 
 const searchParams = new URLSearchParams(paramsObj);
 
-const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
-console.log(id_and_secret_b64);
+const id_and_secret_b64 = btoa(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET);
+console.log('Client using env: ' + id_and_secret_b64);
 
 fetch("https://accounts.spotify.com/api/token", {
   method: "POST",
@@ -56,7 +58,7 @@ fetch("https://accounts.spotify.com/api/token", {
       body: new URLSearchParams({
         grant_type: "refresh_token",
         refresh_token: refreshToken,
-        client_id: client_id
+        client_id: process.env.CLIENT_ID
       }).toString()
     }
     const body = await fetch(url, refreshParamObj)

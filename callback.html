@@ -16,16 +16,16 @@
       <label for="album_name">Album Name: </label><br />
       <input type="text" name="album_name" id="album_name" />
     </form>
-    <button id="download_button">Download</button>
     
-    <ul id="track_listing"></ul>
+    <ol id="track_listing"></ol>
+    <button id="download_button">Download</button>
     <script src="./html2canvas.min.js"></script>
     <script>
       // import html2canvas from 'html2canvas'
-
-      document.getElementById("download_button").onclick = function() {
-        console.log("clicked")
       
+      document.getElementById("download_button").addEventListener("click", (e) => {  
+        console.log("clicked")
+        
         const screenshotDiv = document.getElementById("track_listing")
         
         html2canvas(screenshotDiv).then((canvas) => {
@@ -35,7 +35,8 @@
           a.setAttribute('download', 'song-list.png')
           a.click();
         })
-      }
+      })
       </script>
+
       </body>
 </html>
