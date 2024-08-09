@@ -12,7 +12,7 @@ let web_address = new URL(document.location).searchParams;
 
 let auth_code = web_address.get("code");
 
-// console.log(auth_code)
+console.log(auth_code)
 
 const paramsObj = {
   grant_type: "authorization_code",
