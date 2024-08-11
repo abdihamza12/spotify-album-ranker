@@ -1,5 +1,7 @@
 import { client_id, client_secret } from "./pull_env.mjs";
 
+console.log(client_id, client_secret)
+
 let web_address = new URL(document.location).searchParams;
 
 let auth_code = web_address.get("code");
