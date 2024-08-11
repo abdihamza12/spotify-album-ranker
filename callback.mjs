@@ -1,4 +1,5 @@
 import {getAccessToken} from "./callback_request.mjs"
+
 let web_address = new URL(document.location).searchParams;
 
 let auth_code = web_address.get("code");
