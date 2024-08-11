@@ -1,4 +1,4 @@
-import { paramsObj } from "./callback.js";
+import { paramsObj } from "./callback.mjs";
 import { client_id, client_secret } from "./pull_env.mjs";
 
 console.log(client_id, client_secret)
