@@ -1,7 +1,9 @@
 import { drag_drop } from "./drag_drop.mjs";
+import { getRefreshToken } from "./callback";
 
 function getAlbumId(album_name, token = localStorage.getItem("access_token")) {
-  fetch(
+  try{
+    fetch(
     "https://api.spotify.com/v1/search?q=" + album_name + "&type=album&limit=1",
     {
       method: "GET",
@@ -10,12 +12,26 @@ function getAlbumId(album_name, token = localStorage.getItem("access_token")) {
       },
     }
   )
-    .then((r) => r.json())
     .then((r) => {
+      if(r.status === 401) {
+        console.log('Token expired, refreshing token...');
+        getRefreshToken();
+        return getAlbumId(album_name, token = localStorage.getItem("access_token"))
+      }
+      r.json()
+    
+    })
+    .then((r) => {
+
       console.log("Response", r.albums.items[0].id);
       let album_id = r.albums.items[0].id;
       getAlbumTracks(album_id, localStorage.getItem("access_token"));
     });
+  }
+  catch(error) {
+    console.log("Response failed:", error)
+  }
+  
 }
 
 function getAlbumTracks(album_id, token) {
