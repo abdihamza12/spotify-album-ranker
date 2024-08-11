@@ -17,16 +17,16 @@ console.log(client_id, client_secret)
 
 const searchParams = new URLSearchParams(paramsObj);
 
-const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
+export const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
 console.log('Client using env: ' + id_and_secret_b64);
 
-export function getAccessToken() {
+export function getAccessToken(id_secret) {
     fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     body: searchParams.toString(),
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": "Basic " + id_and_secret_b64,
+      "Authorization": "Basic " + id_secret,
     },
   })
     .then((r) => r.json())

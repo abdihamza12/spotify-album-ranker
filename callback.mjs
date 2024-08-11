@@ -1,4 +1,4 @@
-import {getAccessToken} from "./callback_request.mjs"
+import {getAccessToken, id_and_secret_b64} from "./callback_request.mjs"
 
 let web_address = new URL(document.location).searchParams;
 
@@ -14,7 +14,7 @@ export const paramsObj = {
   redirect_uri: "https://abdihamza12.github.io/spotify-album-ranker/callback.html",
 };
 
-const apiResponse = getAccessToken()
+const apiResponse = getAccessToken(id_and_secret_b64)
 localStorage.setItem("access_token", apiResponse.access_token)
 localStorage.setItem("refresh_token", apiResponse.refresh_token)
 
