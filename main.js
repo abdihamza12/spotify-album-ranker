@@ -1,6 +1,4 @@
-import { client_id } from "./pull_env.mjs"
-
-
+const client_id = "d10044f2d95d49b09c36e3bec519c6de"
 const redirect_uri = 'https://abdihamza12.github.io/spotify-album-ranker/callback.html'
 
 var auth_link = 'https://accounts.spotify.com/authorize?client_id=' +
