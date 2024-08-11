@@ -20,7 +20,7 @@ const searchParams = new URLSearchParams(paramsObj);
 const id_and_secret_b64 = btoa(client_id + ":" + client_secret);
 console.log('Client using env: ' + id_and_secret_b64);
 
-function getAccessToken() {
+export function getAccessToken() {
     fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     body: searchParams.toString(),
@@ -37,5 +37,3 @@ function getAccessToken() {
 
 
 
-
-module.exports = { getAccessToken };
