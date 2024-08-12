@@ -1,5 +1,5 @@
 import { drag_drop } from "./drag_drop.mjs";
-import { getRefreshToken } from "./callback.mjs";
+import { getRefreshToken } from "../callback.mjs";
 
 function getAlbumId(album_name, token = localStorage.getItem("access_token")) {
   try{
