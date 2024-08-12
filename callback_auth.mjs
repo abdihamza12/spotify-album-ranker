@@ -1,11 +1,11 @@
-// import { client_secret } from "./client_credentials.mjs";
-// import { client_id } from "./client_credentials.mjs";
+import { client_secret } from "./client_credentials.mjs";
+import { client_id } from "./client_credentials.mjs";
 // import { getAlbumId } from "./search.mjs"
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log(process.env.CLIENT_ID, process.env.CLIENT_SECRET);
+console.log(client_id, client_secret);
 
 
 let web_address = new URL(document.location).searchParams;
@@ -22,7 +22,7 @@ const paramsObj = {
 
 const searchParams = new URLSearchParams(paramsObj);
 
-const id_and_secret_b64 = btoa(process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET);
+const id_and_secret_b64 = btoa(client_id + ":" +client_secret);
 console.log('Client using env: ' + id_and_secret_b64);
 
 fetch("https://accounts.spotify.com/api/token", {
@@ -58,7 +58,7 @@ fetch("https://accounts.spotify.com/api/token", {
       body: new URLSearchParams({
         grant_type: "refresh_token",
         refresh_token: refreshToken,
-        client_id: process.env.CLIENT_ID
+        client_id: client_id
       }).toString()
     }
     const body = await fetch(url, refreshParamObj)
