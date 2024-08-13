@@ -1,4 +1,4 @@
-import {getAccessToken, id_and_secret_b64} from "./callback_request.mjs"
+// import {getAccessToken, id_and_secret_b64} from "./callback_request.mjs"
 
 let web_address = new URL(document.location).searchParams;
 
@@ -6,17 +6,39 @@ let auth_code = web_address.get("code");
 
 console.log(auth_code)
 
-
-
 export const paramsObj = {
   grant_type: "authorization_code",
   code: auth_code,
   redirect_uri: "https://abdihamza12.github.io/spotify-album-ranker/callback.html",
 };
 
-const apiResponse = getAccessToken(id_and_secret_b64)
-localStorage.setItem("access_token", apiResponse.access_token)
-localStorage.setItem("refresh_token", apiResponse.refresh_token)
+
+
+// const apiResponse = getAccessToken(id_and_secret_b64)
+// localStorage.setItem("access_token", apiResponse.access_token)
+// localStorage.setItem("refresh_token", apiResponse.refresh_token)
+
+fetch("http://localhost:3000/api/data", {
+  method: "GET",
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error("Failed to fetch data from personal server");
+  }
+  return response.json();
+})
+.then(serverData => {
+  console.log("Data retrieved from personal server:", serverData)
+  localStorage.setItem("access_token", serverData.access_token)
+  localStorage.setItem("refresh_token", serverData.refresh_token)
+})
+.catch(error => {
+  console.error("Error:", error)
+})
+
 
 export async function getRefreshToken() {
     const refreshToken = localStorage.getItem('refresh_token')
