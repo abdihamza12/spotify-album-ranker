@@ -6,13 +6,19 @@ let auth_code = web_address.get("code");
 
 console.log(auth_code)
 
-export const paramsObj = {
+const paramsObj = {
   grant_type: "authorization_code",
   code: auth_code,
   redirect_uri: "https://abdihamza12.github.io/spotify-album-ranker/callback.html",
 };
 
-
+fetch('http://localhost:3000/authcode', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: paramsObj
+})
 
 // const apiResponse = getAccessToken(id_and_secret_b64)
 // localStorage.setItem("access_token", apiResponse.access_token)

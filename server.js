@@ -5,10 +5,23 @@ dotenv.config();
 
 const app = express();
 
+app.listen(3000, () => {
+    console.log("server is running on http://localhost:3000")
+})
 
-const searchParams = new URLSearchParams(paramsObj);
+fetch("http://localhost:3000/authcode", {
+    method: 'GET',
+    headers: {
+        "Content-Type": "application/json"
+    }
+})
+.then((response) => {
+    const searchParams = new URLSearchParams(response);
+    getAccessToken(searchParams)
+})
+// fetch paramsObj from personal server
 
-
+async function getAccessToken(searchParams){
 fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     body: searchParams.toString(),
@@ -46,7 +59,7 @@ fetch("https://accounts.spotify.com/api/token", {
 })
 .catch((error) => console.error("Error", error)); 
 
-
+}
 
 app.use(express.json());
 
@@ -55,6 +68,3 @@ app.post('/api/data', (req, res) => {
     console.log("Received data:", receivedData)
 })
 
-app.listen(3000, () => {
-    console.log("server is running on http://localhost:3000")
-})
