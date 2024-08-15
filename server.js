@@ -8,8 +8,8 @@ dotenv.config();
 
 // Start the server at ___servername____
 const app = express();
-app.listen("https://abdihamza12.github.io/spotify-album-ranker/api", () => {
-    console.log("server is running on https://abdihamza12.github.io/spotify-album-ranker/api")
+app.listen("https://rankd-testing.vercel.app/api", () => {
+    console.log("server is running on https://rankd-testing.vercel.app/api")
 })
 
 
@@ -20,13 +20,13 @@ app.post("/api/data", (req, res) => {
     if(data) {
         fetchAuthCode();
     }
-    
+
 })
 
 
 // Fetch the AuthCode from the client that was API Posted from Callback.mjs. Should be in Object form
 async function fetchAuthCode() {
-    fetch("https://abdihamza12.github.io/spotify-album-ranker/api/authcode", {
+    fetch("https://rankd-testing.vercel.app/api/authcode", {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
@@ -60,7 +60,7 @@ fetch("https://accounts.spotify.com/api/token", {
         return response.json()
 })
 .then(apiData => {
-    return fetch('https://abdihamza12.github.io/spotify-album-ranker/api/data', {
+    return fetch('https://rankd-testing.vercel.app/api/data', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
