@@ -1,5 +1,3 @@
-// import {getAccessToken, id_and_secret_b64} from "./callback_request.mjs"
-
 let web_address = new URL(document.location).searchParams;
 
 let auth_code = web_address.get("code");
@@ -12,7 +10,7 @@ const paramsObj = {
   redirect_uri: "https://abdihamza12.github.io/spotify-album-ranker/callback.html",
 };
 
-fetch('http://localhost:3000/authcode', {
+fetch('https://abdihamza12.github.io/spotify-album-ranker/api/authcode', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -20,11 +18,12 @@ fetch('http://localhost:3000/authcode', {
   body: paramsObj
 })
 
+
 // const apiResponse = getAccessToken(id_and_secret_b64)
 // localStorage.setItem("access_token", apiResponse.access_token)
 // localStorage.setItem("refresh_token", apiResponse.refresh_token)
 
-fetch("http://localhost:3000/api/data", {
+fetch("https://abdihamza12.github.io/spotify-album-ranker/api/data", {
   method: "GET",
   headers: {
     'Content-Type': 'application/json'

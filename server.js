@@ -1,26 +1,46 @@
+// To create a server to host a custom api
 import express from 'express'
+// To keep Client Credentials out of the front end
 import dotenv from 'dotenv'
-import { paramsObj } from './callback.mjs';
 dotenv.config();
 
+
+
+// Start the server at ___servername____
 const app = express();
-
-app.listen(3000, () => {
-    console.log("server is running on http://localhost:3000")
+app.listen("https://abdihamza12.github.io/spotify-album-ranker/api", () => {
+    console.log("server is running on https://abdihamza12.github.io/spotify-album-ranker/api")
 })
 
-fetch("http://localhost:3000/authcode", {
-    method: 'GET',
-    headers: {
-        "Content-Type": "application/json"
+
+app.use(express.json());
+
+app.post("/api/data", (req, res) => {
+    const data = req.body
+    if(data) {
+        fetchAuthCode();
     }
+    
 })
-.then((response) => {
-    const searchParams = new URLSearchParams(response);
-    getAccessToken(searchParams)
-})
-// fetch paramsObj from personal server
 
+
+// Fetch the AuthCode from the client that was API Posted from Callback.mjs. Should be in Object form
+async function fetchAuthCode() {
+    fetch("https://abdihamza12.github.io/spotify-album-ranker/api/authcode", {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then((response) => {
+        // Turns the response object to URLSearchParams and runs it as a function input.
+        const searchParams = new URLSearchParams(response);
+        getAccessToken(searchParams)
+    })
+}
+
+
+// Function that does a fetch request
 async function getAccessToken(searchParams){
 fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -40,7 +60,7 @@ fetch("https://accounts.spotify.com/api/token", {
         return response.json()
 })
 .then(apiData => {
-    return fetch('http://localhost:3000/api/data', {
+    return fetch('https://abdihamza12.github.io/spotify-album-ranker/api/data', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -61,7 +81,6 @@ fetch("https://accounts.spotify.com/api/token", {
 
 }
 
-app.use(express.json());
 
 app.post('/api/data', (req, res) => {
     const receivedData = req.body;
