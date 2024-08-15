@@ -12,7 +12,6 @@ app.listen("https://rankd-testing.vercel.app/api", () => {
     console.log("server is running on https://rankd-testing.vercel.app/api")
 })
 
-
 app.use(express.json());
 
 app.post("/api/data", (req, res) => {
@@ -82,8 +81,8 @@ fetch("https://accounts.spotify.com/api/token", {
 }
 
 
+
 app.post('/api/data', (req, res) => {
     const receivedData = req.body;
     console.log("Received data:", receivedData)
 })
-

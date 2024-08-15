@@ -7,7 +7,7 @@ console.log(auth_code)
 const paramsObj = {
   grant_type: "authorization_code",
   code: auth_code,
-  redirect_uri: "https://abdihamza12.github.io/spotify-album-ranker/callback.html",
+  redirect_uri: "https://rankd-testing.vercel.app/callback.html",
 };
 
 fetch('https://abdihamza12.github.io/spotify-album-ranker/api/authcode', {
