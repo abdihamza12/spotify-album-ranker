@@ -8,7 +8,7 @@ dotenv.config();
 
 // Start the server at ___servername____
 const app = express();
-app.listen("/api", () => {
+app.listen(3000, () => {
     console.log("server is running on https://rankd-testing.vercel.app/api")
 })
 
