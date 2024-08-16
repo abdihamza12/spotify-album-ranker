@@ -82,7 +82,7 @@ fetch("https://accounts.spotify.com/api/token", {
 
 
 
-app.post('/api/data', (req, res) => {
-    const receivedData = req.body;
-    console.log("Received data:", receivedData)
-})
+// app.post('/api/data', (req, res) => {
+//     const receivedData = req.body;
+//     console.log("Received data:", receivedData)
+// })
