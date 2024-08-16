@@ -9,7 +9,7 @@ dotenv.config();
 // Start the server at ___servername____
 const app = express();
 
-app.get("/api", (req, res) => {
+app.get('/api', (req, res) => {
     res.json({message: 'Hello from HamzaAPI'})
 })
 
