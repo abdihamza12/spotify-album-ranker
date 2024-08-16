@@ -8,9 +8,7 @@ dotenv.config();
 
 // Start the server at ___servername____
 const app = express();
-app.listen(3000, () => {
-    console.log("server is running on https://rankd-testing.vercel.app/api")
-})
+
 
 app.use(express.json());
 
@@ -80,7 +78,9 @@ fetch("https://accounts.spotify.com/api/token", {
 
 }
 
-
+app.listen(process.env.PORT || 3000, () => {
+    console.log("server is running on https://rankd-testing.vercel.app/api")
+})
 
 // app.post('/api/data', (req, res) => {
 //     const receivedData = req.body;
