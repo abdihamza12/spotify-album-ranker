@@ -9,16 +9,19 @@ dotenv.config();
 // Start the server at ___servername____
 const app = express();
 
-
-app.use(express.json());
-
-app.post("/api/data", (req, res) => {
-    const data = req.body
-    if(data) {
-        fetchAuthCode();
-    }
-
+app.get("/api", (req, res) => {
+    res.json({message: 'Hello from HamzaAPI'})
 })
+
+// app.use(express.json());
+
+// app.post("/api/data", (req, res) => {
+//     const data = req.body
+//     if(data) {
+//         fetchAuthCode();
+//     }
+
+// })
 
 
 // Fetch the AuthCode from the client that was API Posted from Callback.mjs. Should be in Object form
