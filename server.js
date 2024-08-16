@@ -10,8 +10,9 @@ dotenv.config();
 const app = express();
 
 app.get('/api', (req, res) => {
-    res.json({message: 'Hello from HamzaAPI'})
-})
+    res.json({ message: 'Hello from the HamzaAPI!' });
+  });
+
 
 // app.use(express.json());
 
@@ -78,11 +79,10 @@ fetch("https://accounts.spotify.com/api/token", {
     console.log("Data successfully posted to personal server:", serverResponse)
 })
 .catch((error) => console.error("Error", error)); 
-
 }
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log("server is running on https://rankd-testing.vercel.app/api")
+app.listen(process.env.PORT || 443, () => {
+    console.log("server is running on https://rankd-testing.vercel.app:3000")
 })
 
 // app.post('/api/data', (req, res) => {
