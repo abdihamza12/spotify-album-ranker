@@ -23,7 +23,7 @@ fetch('https://rankd-testing.vercel.app/api/authcode', {
 // localStorage.setItem("access_token", apiResponse.access_token)
 // localStorage.setItem("refresh_token", apiResponse.refresh_token)
 
-fetch("https://abdihamza12.github.io/spotify-album-ranker/api/data", {
+fetch("https://rankd-testing.vercel.app/api/data", {
   method: "GET",
   headers: {
     'Content-Type': 'application/json'
