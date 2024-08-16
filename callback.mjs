@@ -10,7 +10,7 @@ const paramsObj = {
   redirect_uri: "https://rankd-testing.vercel.app/callback.html",
 };
 
-fetch('https://abdihamza12.github.io/spotify-album-ranker/api/authcode', {
+fetch('https://rankd-testing.vercel.app/api/authcode', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
