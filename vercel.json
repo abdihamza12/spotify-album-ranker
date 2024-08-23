@@ -2,7 +2,7 @@
     "version": 2,
     "functions": {
       "server.js": {
-        "runtime": "nodejs21.x"
+        "runtime": "nodejs21.7.1"
       }
     }
   }
