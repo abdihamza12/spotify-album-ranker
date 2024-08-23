@@ -1,5 +1,7 @@
 // To create a server to host a custom api
 import express from 'express'
+// To enable Vercel to host my serverless endpoints
+import serverless from 'serverless-http'
 // To keep Client Credentials out of the front end
 import dotenv from 'dotenv'
 dotenv.config();
@@ -84,9 +86,7 @@ fetch("https://accounts.spotify.com/api/token", {
 .catch((error) => console.error("Error", error)); 
 }
 
-app.listen(() => {
-    console.log("server is running on https://rankd-testing.vercel.app/api")
-})
+module.exports.handler = serverless(app);
 
 // app.post('/api/data', (req, res) => {
 //     const receivedData = req.body;
