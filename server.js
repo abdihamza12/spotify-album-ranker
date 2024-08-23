@@ -81,7 +81,7 @@ fetch("https://accounts.spotify.com/api/token", {
 .catch((error) => console.error("Error", error)); 
 }
 
-app.listen(process.env.PORT || 40000, "https://rankd-testing.vercel.app", () => {
+app.listen(() => {
     console.log("server is running on https://rankd-testing.vercel.app:3030/api")
 })
 
